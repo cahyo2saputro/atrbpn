@@ -1,0 +1,23 @@
+# Checks to see if the user is attempting to access a valid file,
+# such as an image or css document, if this isn’t true it sends the
+# request to index.php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ?index.php?/$1 [L]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC]
+RewriteRule \.(gif|jpg|png|pdf|doc|dwg)$ - [F]
+
+# RewriteRule ^/?DIGITALISASI/BAGELEN/BAGELEN/BUKU_TANAH/(.*) http://localhost/bpn/Auth/checkauth/?req=%{REQUEST_URI} [R=301,L]
+# RewriteRule \.(gif|jpg|png|pdf|doc)$ - [F]
+#RewriteRule ^HAKPPAT/(.*)\.(gif|jpg|png|pdf|doc)$ - [F]
+RewriteRule ^digitalisasi/(.*)\.(gif|jpg|png|doc)$ - [F]
+RewriteRule ^images/(.*)\.(gif|jpg|jpeg|png|pdf|doc)$ - [NC,F,L]
+#RewriteRule ^PETA/(.*)\.(gif|jpg|png|doc)$ - [F]
+#RewriteRule ^DATA/(.*)\.(gif|jpg|png|doc)$ - [F]
+#RewriteRule ^filelibrary/(.*)\.(gif|jpg|png|pdf|doc)$ - [F]
+#RewriteRule ^application/(.*)\.(gif|jpg|png|pdf|doc)$ - [F]
+#RewriteRule ^vendor/(.*)\.(gif|jpg|png|pdf|doc)$ - [F]
+#RewriteRule ^system/(.*)\.(gif|jpg|png|pdf|doc)$ - [F]
+#RewriteRule ^assets/(.*)\.(gif|jpg|png|pdf|doc)$ - [F]
